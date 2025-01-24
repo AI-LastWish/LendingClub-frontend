@@ -24,7 +24,6 @@ async function fetchReport() {
 type ReportData = {
   summary: string;
   image?: string;
-  insights: string[]; // Define insights as an array of strings
 };
 
 export default async function ReportPage() {
@@ -33,7 +32,7 @@ export default async function ReportPage() {
 
   try {
     const data = await fetchReport();
-    reportData = data.report as ReportData; // Explicitly type the fetched report data
+    reportData = data as ReportData; // Ensure fetched data matches the expected type
   } catch (err) {
     error = err instanceof Error ? err.message : "An unexpected error occurred.";
   }
@@ -63,16 +62,6 @@ export default async function ReportPage() {
                   className="mt-4 max-w-full h-auto border rounded-lg shadow-md"
                 />
               )}
-            </section>
-
-            {/* Actionable Insights */}
-            <section>
-              <h2 className="text-2xl font-semibold">Actionable Insights</h2>
-              <ul className="list-disc pl-6 mt-4 text-gray-600">
-                {reportData.insights.map((insight: string, index: number) => (
-                  <li key={index}>{insight}</li>
-                ))}
-              </ul>
             </section>
           </div>
         )
