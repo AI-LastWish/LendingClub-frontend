@@ -26,6 +26,9 @@ type ReportData = {
   image?: string;
 };
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function ReportPage() {
   let reportData: ReportData | null = null;
   let error: string | null = null;

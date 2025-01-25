@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FeatureCard from "./components/FeatureCard";
 
 export default function Home() {
@@ -7,7 +8,7 @@ export default function Home() {
       <header className="flex flex-col items-center gap-4 mb-12 text-center">
         {/* Placeholder SVG for Logo */}
         <div className="w-32 h-8 bg-blue-500 flex items-center justify-center text-white font-bold rounded cursor-pointer">
-          <a href="/">LC</a>
+          <Link href="/">LC</Link>
         </div>
         <h1 className="text-4xl font-bold">Lending Club Analysis</h1>
         <p className="text-lg text-gray-600">

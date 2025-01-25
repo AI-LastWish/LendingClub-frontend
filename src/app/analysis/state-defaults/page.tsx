@@ -21,6 +21,9 @@ async function fetchStateDefaults() {
   }
 }
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function StateDefaultsPage() {
   let imageData: string | null = null;
   let highestDefaults: Record<string, number> | null = null;

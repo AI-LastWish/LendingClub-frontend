@@ -1,37 +1,40 @@
-"use client";
+export const metadata = {
+  title: "Loan Distribution",
+  description: "View the distribution of loan amounts.",
+};
 
-import { useEffect, useState } from "react";
+// Fetch data on the server side
+async function fetchLoanDistribution() {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/data_analysis/loan-distribution`;
 
-export default function LoanDistribution() {
-  const [imageData, setImageData] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  try {
+    const response = await fetch(apiUrl);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/api/data_analysis/loan-distribution");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setImageData(data.image); // Backend returns the base64-encoded image
-      } catch (err) {
-        setError("Failed to fetch loan distribution data.");
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data from API: ${response.statusText}`);
+    }
 
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <p className="text-center text-lg">Loading...</p>;
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    return { error: "Failed to fetch loan distribution data." };
   }
+}
 
-  if (error) {
-    return <p className="text-center text-red-600">{error}</p>;
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
+export default async function LoanDistributionPage() {
+  const data = await fetchLoanDistribution();
+
+  if (data.error) {
+    return (
+      <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-center p-8 sm:p-20">
+        <h1 className="text-4xl font-bold mb-6">Loan Distribution</h1>
+        <p className="text-red-600 text-lg">{data.error}</p>
+      </div>
+    );
   }
 
   return (
@@ -40,9 +43,9 @@ export default function LoanDistribution() {
       <p className="text-lg text-gray-600 mb-6">
         This chart shows the distribution of loan amounts.
       </p>
-      {imageData && (
+      {data.image && (
         <img
-          src={imageData}
+          src={data.image}
           alt="Loan Amount Distribution"
           className="w-full max-w-4xl rounded shadow-lg"
         />

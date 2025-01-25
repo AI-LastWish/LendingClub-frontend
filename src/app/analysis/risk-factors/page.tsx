@@ -21,6 +21,9 @@ async function fetchRiskFactors() {
   }
 }
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function RiskFactorsPage() {
   let data: {
     image: string;

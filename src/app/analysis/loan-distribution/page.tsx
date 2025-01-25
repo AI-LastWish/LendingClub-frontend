@@ -21,6 +21,9 @@ async function fetchLoanDistribution() {
   }
 }
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function LoanDistributionPage() {
   let imageData: string | null = null;
   let summary: string | null = null;

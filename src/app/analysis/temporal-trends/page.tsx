@@ -22,6 +22,9 @@ async function fetchTemporalTrends() {
   }
 }
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function TemporalTrendsPage() {
   let imageData: string | null = null;
   let summary: string | null = null;

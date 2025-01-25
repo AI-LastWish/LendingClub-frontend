@@ -21,6 +21,9 @@ async function fetchGradeDefaults() {
   }
 }
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function GradeDefaultsPage() {
   let imageData: string | null = null;
   let tableData: Record<string, number> | null = null;
