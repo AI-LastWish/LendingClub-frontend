@@ -15,8 +15,8 @@ To run this project locally, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/lendingclub-frontend.git
-   cd lendingclub-frontend
+   git clone https://github.com/AI-LastWish/LendingClub-frontend.git
+   cd LendingClub-frontend
    ```
 2. Install dependencies:
    ```bash
