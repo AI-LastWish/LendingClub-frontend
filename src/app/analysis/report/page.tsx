@@ -54,14 +54,14 @@ export default async function ReportPage() {
             {/* Visualization and Summary */}
             <section>
               <h2 className="text-2xl font-semibold">Summary</h2>
-              <p className="mt-2 text-gray-600">{reportData.summary}</p>
               {reportData.image && (
                 <img
-                  src={reportData.image}
-                  alt="Analysis Visualization"
-                  className="mt-4 max-w-full h-auto border rounded-lg shadow-md"
+                src={reportData.image}
+                alt="Analysis Visualization"
+                className="mt-4 max-w-full h-auto border rounded-lg shadow-md"
                 />
               )}
+              <p className="mt-8 text-gray-600">{reportData.summary}</p>
             </section>
           </div>
         )
