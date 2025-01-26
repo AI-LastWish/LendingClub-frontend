@@ -1,24 +1,51 @@
 
 # LendingClub Frontend
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). The application visualizes insights and trends in LendingClub loan data, featuring dynamic visualizations such as histograms, bar charts, and line plots.
+This is a [Next.js](https://nextjs.org) project designed to visualize insights and trends from LendingClub loan data, with an emphasis on user-friendly, interactive, and insightful visualizations. The application supports interactive data exploration, enabling users to analyze loan characteristics and default trends effectively.
 
-## Getting Started
+## Objective
 
-### Prerequisites
+This project aims to provide an interactive platform for exploring the LendingClub Loans dataset. The visualizations and insights generated help identify trends, such as loan distributions, default rates, and risk factors, while supporting decision-making for risk assessments and loan recommendations.
 
-To run this project locally, ensure you have the following installed:
+---
+
+## Key Features
+
+- **Dynamic Visualizations**:
+  - Histograms for loan distributions.
+  - Bar charts for categorical loan trends.
+  - Line charts for temporal trends.
+  - Heatmaps for correlation analysis.
+
+- **Interactive Filtering**:
+  - Users can filter results by timeframes, loan grades, and states.
+
+- **Scalable Frontend Architecture**:
+  - Built with Next.js 15 and React components for modularity.
+  - Styled with Tailwind CSS for a modern, responsive UI.
+
+- **API Integration**:
+  - Connects with backend APIs to fetch precomputed data for loan distributions, default rates, risk factors, and more.
+
+---
+
+## Prerequisites
+
+Ensure you have the following installed:
 - Node.js (v16 or later)
-- npm, yarn, or pnpm package manager
+- A package manager: npm, yarn, or pnpm
 
-### Installation
+---
 
-1. Clone the repository:
+## Installation and Setup
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/AI-LastWish/LendingClub-frontend.git
    cd LendingClub-frontend
    ```
-2. Install dependencies:
+
+2. **Install dependencies**:
    ```bash
    npm install
    # or
@@ -27,104 +54,106 @@ To run this project locally, ensure you have the following installed:
    pnpm install
    ```
 
-### Running the Development Server
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to view the application.
-
-You can start editing the page by modifying `src/app/page.tsx`. The app will auto-update as you make changes.
-
-### Build for Production
-
-To build the application for production:
-```bash
-npm run build
-```
-
-This will create an optimized build in the `.next` folder.
-
-### Deployment
-
-The easiest way to deploy the application is via [Vercel](https://vercel.com). Follow the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for detailed instructions.
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+   This generates an optimized production build in the `.next` directory.
 
 ---
 
 ## Methodology
 
-This application visualizes insights derived from LendingClub loan data. The workflow includes:
+The application visualizes insights from the LendingClub dataset using the following steps:
 
 1. **Data Analysis**:
-   - Loan data was analyzed to identify loan default trends and distributions.
-   - Trends such as yearly default rates, loan amounts, and borrower attributes were extracted and prepared for visualization.
+   - Analyze the distribution of loan amounts and default trends.
+   - Highlight state-wise and grade-wise default rates.
+   - Identify risk factors contributing to defaults.
 
-2. **Visualizations**:
-   - **Histograms**: Display loan amount distributions.
-   - **Line Charts**: Show yearly default trends.
-   - **Bar Charts**: Illustrate loan counts across categories.
-   - **Heatmaps**: Represent correlations between borrower features.
+2. **Visualization Design**:
+   - Create intuitive visualizations (e.g., bar charts, histograms, and line plots).
+   - Ensure accessibility with responsive layouts and tooltips for data points.
 
-3. **Interactivity**:
-   - Users can interact with visualizations by applying filters to analyze specific timeframes or categories.
+3. **API Integration**:
+   - Fetch precomputed insights using dedicated endpoints like `/api/data_analysis/loan-distribution`, `/api/data_analysis/grade-defaults`, and others.
 
----
-
-## Results and Insights
-
-### Key Findings
-1. **Default Trends**:
-   - Significant increases in loan defaults were observed during economic downturns, such as in 2008.
-   - A decline in defaults was noted post-2015, correlating with improved lending practices.
-
-2. **Loan Distribution**:
-   - Loan amounts ranged from $500 to $35,000, with an average of $11,035.
-   - 50% of loans were below $9,600.
-
-3. **Actionable Insights**:
-   - Focused risk assessments during economic downturns could mitigate losses.
-   - Additional borrower attributes (e.g., credit score) should be factored into risk models.
+4. **Interactivity**:
+   - Implement dynamic filters for exploring trends across years, grades, and states.
 
 ---
 
-## Learn More
+## Key Insights
 
-To learn more about Next.js, take a look at the following resources:
-- [Next.js Documentation](https://nextjs.org/docs): Learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn): An interactive Next.js tutorial.
+### 1. Default Trends
+- Significant spikes in defaults were observed during economic recessions, e.g., 2008.
+- Improved lending practices reduced defaults after 2015.
 
-Check out the [Next.js GitHub repository](https://github.com/vercel/next.js) for feedback and contributions.
+### 2. Loan Distribution
+- Loan amounts range between $500 and $35,000.
+- 50% of loans are below $9,600.
+
+### 3. Risk Identification
+- High default rates are correlated with specific grades and states.
+- Tailored lending policies can mitigate risks.
 
 ---
 
-## Deploy on Vercel
+## API Endpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new). Follow the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for detailed instructions.
+### `/api/data_analysis/loan-distribution` [GET]
+- **Description**: Fetches loan amount distribution.
+- **Response**: JSON object with loan ranges and counts.
+
+### `/api/data_analysis/grade-defaults` [GET]
+- **Description**: Fetches grade-wise default analysis.
+- **Response**: JSON object with default rates by grade.
+
+### `/api/data_analysis/state-defaults` [GET]
+- **Description**: Fetches state-wise default analysis.
+- **Response**: JSON object with default rates by state.
+
+### `/api/data_analysis/risk-factors` [GET]
+- **Description**: Fetches analysis of risk factors.
+- **Response**: JSON object with risk factor impacts.
+
+### `/api/data_analysis/temporal-trends` [GET]
+- **Description**: Fetches temporal trends of defaults.
+- **Response**: JSON object with year-by-year trends.
+
+### `/api/data_analysis/report` [GET]
+- **Description**: Fetches the final analysis report.
+- **Response**: JSON object summarizing findings.
 
 ---
 
-## Contribution Guidelines
+## Deployment
 
-We welcome contributions to improve this project! To contribute:
+The application is deployed via [Vercel](https://vercel.com). For deployment:
+1. Link the repository to a Vercel project.
+2. Follow [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+---
+
+## Contribution
+
+We welcome contributions to enhance this project! To contribute:
 1. Fork the repository.
 2. Create a feature branch:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Description of your changes"
-   ```
-4. Push the branch and open a pull request.
+3. Commit and push your changes.
+4. Open a pull request for review.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the LICENSE file for details.
