@@ -54,13 +54,16 @@ Ensure you have the following installed:
    pnpm install
    ```
 
-3. **Run the development server**:
+3. Configure environment variables:
+   Rename the .example.env.local to .env.local and add your key
+
+4. **Run the development server**:
    ```bash
    npm run dev
    ```
    Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-4. **Build for production**:
+5. **Build for production**:
    ```bash
    npm run build
    ```
